@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ChinesePoem</string>
+
+    <string name="main_text_0">点击发现更多美好</string>
+    <string name="main_text_1">正在加载诗词，品杯茶再走。</string>
+    <string name="main_text_3">我的笔记</string>
+    <string name="main_edittext_1">记点笔记</string>
+    <string name="button_1">发送</string>
+
+    <string name="search_1">输入诗词</string>
+    <string name="button_2">搜索</string>
+</resources>
