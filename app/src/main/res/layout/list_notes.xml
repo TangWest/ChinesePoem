@@ -9,13 +9,18 @@
         android:id="@+id/note_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="content"
-        android:textSize="18sp" />
+        android:text="笔记"
+        android:textColor="#381924"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/note_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Wed Oct 21 14:38:25 GMT 2020"
+        android:textAlignment="textEnd"
+        android:textColor="#b598a1"
+        android:textSize="12sp"
         tools:gravity="right" />
 
 </LinearLayout>

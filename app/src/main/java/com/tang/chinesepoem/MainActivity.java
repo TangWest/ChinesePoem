@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements Runnable{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if ((getIntent().getFlags() & Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT) != 0) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_main);
         tv1 = findViewById(R.id.main_text_1);
         tv2 = findViewById(R.id.main_text_2);
@@ -69,9 +73,15 @@ public class MainActivity extends AppCompatActivity implements Runnable{
             Bundle bundle = intent.getExtras();
             if(bundle!=null){
                 href = bundle.getString("href");
-                String idstr = href.replaceAll("[^\\d]","");
-                id = Integer.parseInt(idstr);
-                Log.i(TAG,"id "+id);
+                if(href!=null){
+                    String idstr = href.replaceAll("[^\\d]","");
+                    id = Integer.parseInt(idstr);
+                    Log.i(TAG,"id from bundle "+id);
+                }else{
+                    id = 23309;
+                    href = "/chaxun/list/23309.html";
+                    Log.i(TAG,"id default "+id+" href default "+href);
+                }
             }
         }
 
@@ -114,11 +124,10 @@ public class MainActivity extends AppCompatActivity implements Runnable{
                 Object itemAtPosition = lv.getItemAtPosition(position);
                 HashMap<String,String> map = (HashMap<String,String>)itemAtPosition;
                 String itemtime = map.get("note_time");
+                delNote(id,itemtime);
                 //视图删除
                 listItems.remove(position);
                 listItemAdapter.notifyDataSetChanged();
-
-                delNote(id,itemtime);
                 return true;//长按之后不执行点击事件
             }
         });
@@ -225,14 +234,14 @@ public class MainActivity extends AppCompatActivity implements Runnable{
         String nzstr = nz.text();
         //内容逢句号等 换行
         String contentsstr = contents.text();
-        String[] s= {"。","？","！"};
+        String[] s= {"。","？","！","；"};
         for(int i=0;i<s.length;i++){
             contentsstr = contentsstr.replace(s[i], s[i]+"<br>");
         }
 
-        String poemstr = "<font size='1' style='font-family:SimSun' color='blue'><big>"+titlestr+"</big></font><br>"
-                +"<font size='2' style='font-family:SimSun'>"+nzstr+"</font><br>"
-                +"<font size='3' style='font-family:SimSun'><big>"+contentsstr+"</big></font>";
+        String poemstr = "<font size='1' style='font-family:SimSun'><big><b>"+titlestr+"</b></big></font><br>"
+                +"<font size='2' style='font-family:SimSun'><b>"+nzstr+"</b></font><br>"
+                +"<font size='3' style='font-family:SimSun'><big><b>"+contentsstr+"</b></big></font>";
         Message msg = handler.obtainMessage(0);
         msg.obj = poemstr;
         handler.sendMessage(msg);
@@ -281,8 +290,8 @@ public class MainActivity extends AppCompatActivity implements Runnable{
         showNotes();
     }
 
-    private void delNote(int id,String time){
+    private void delNote(int noteid,String time){
         NotesManager notesManager = new NotesManager(MainActivity.this);
-        notesManager.delete(id,time);
+        notesManager.delete(noteid,time);
     }
 }

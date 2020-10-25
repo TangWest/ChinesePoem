@@ -5,6 +5,7 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bird_vague"
     tools:context=".MainActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -13,9 +14,12 @@
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#E5E6DA"
         android:clickable="true"
+        app:backgroundTint="#E5E6DA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#7c1823"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
@@ -24,23 +28,30 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:shadowColor="#AE862E"
+        android:shadowDx="5"
+        android:shadowRadius="5"
         android:text="@string/main_text_0"
+        android:textColor="#E5E6DA"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/fbutton_1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:shadowDy="5" />
 
     <TextView
         android:id="@+id/main_text_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:maxLines="6"
         android:scrollbars="vertical"
         android:singleLine="false"
         android:text="@string/main_text_1"
         android:textAlignment="center"
+        android:textColor="#7c1823"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_text_0" />
@@ -48,25 +59,45 @@
     <TextView
         android:id="@+id/main_text_2"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/notes_edittext"
         android:maxLines="8"
         android:scrollbars="vertical"
         android:singleLine="false"
+        android:textColor="#381924"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_text_1" />
 
-    <ListView
-        android:id="@+id/list_2"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
+    <TextView
+        android:id="@+id/main_text_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="@string/main_text_3"
+        android:textColor="#7c1823"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_text_2" />
+
+    <ListView
+        android:id="@+id/list_2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/notes_edittext"
         android:maxLines="3"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,12 +109,17 @@
 
     <EditText
         android:id="@+id/main_edittext_1"
-        android:layout_width="308dp"
-        android:layout_height="46dp"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/notes_edittext"
         android:ems="10"
         android:hint="@string/main_edittext_1"
         android:inputType="textPersonName"
+        android:textColor="#b598a1"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_1"
         app:layout_constraintStart_toStartOf="parent" />
@@ -91,22 +127,16 @@
     <Button
         android:id="@+id/button_1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="6dp"
+        android:background="@drawable/all_buttons"
         android:text="@string/button_1"
+        android:textColor="#e2e1e4"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/main_edittext_1" />
-
-    <TextView
-        android:id="@+id/main_text_3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/main_text_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_text_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
